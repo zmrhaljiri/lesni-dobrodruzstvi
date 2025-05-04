@@ -1,5 +1,5 @@
 {
-  "name": "pixi_project_template",
+  "name": "lesni-dobrodruzstvi",
   "type": "module",
   "scripts": {
     "start": "npm run dev",
