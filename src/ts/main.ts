@@ -7,7 +7,10 @@ import { loadLayers } from "./scene/loadLayers";
 import { playBackgroundMusic } from "./sound/music";
 import { STAGE_WIDTH, STAGE_HEIGHT, BACKGROUND_COLOR } from "./constants";
 
+let gameStarted = false;
+
 export async function startGame() {
+  gameStarted = true;
   const canvas = document.getElementById("pixi-canvas") as HTMLCanvasElement;
 
   const app = new Application();
@@ -43,6 +46,8 @@ export async function startGame() {
 }
 
 document.getElementById("start-button")?.addEventListener("click", () => {
-  document.getElementById("start-overlay")?.classList.add("hidden");
-  startGame();
+  if (!gameStarted) {
+    document.getElementById("start-overlay")?.classList.add("hidden");
+    startGame();
+  }
 });
