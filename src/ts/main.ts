@@ -7,7 +7,6 @@ import { loadLayers } from "./scene/loadLayers";
 import { playBackgroundMusic } from "./sound/music";
 import { STAGE_WIDTH, STAGE_HEIGHT, BACKGROUND_COLOR } from "./constants";
 
-// Called once the "Start Game" button is clicked
 export async function startGame() {
   const canvas = document.getElementById("pixi-canvas") as HTMLCanvasElement;
 
@@ -43,7 +42,6 @@ export async function startGame() {
   resizeCanvasToFit(canvas);
 }
 
-// Listen for start button click
 document.getElementById("start-button")?.addEventListener("click", () => {
   document.getElementById("start-overlay")?.classList.add("hidden");
   startGame();
