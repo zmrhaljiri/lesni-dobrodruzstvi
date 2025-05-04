@@ -17,13 +17,13 @@ export const SCROLL_EASING_SLOW = 0.015;
 export const SCROLL_STEP = 0.05;
 
 export const SPIRIT_COLOR = 0xfffc14;
-export const SPIRIT_RADIUS_MIN = 1;
-export const SPIRIT_RADIUS_VARIANCE = 2;
+export const SPIRIT_RADIUS_MIN = 0.2;
+export const SPIRIT_RADIUS_VARIANCE = 1.2;
 export const SPIRIT_FLOAT_FREQ_Y = 0.001;
 export const SPIRIT_FLOAT_FREQ_X = 0.0001;
 export const SPIRIT_FLOAT_AMPLITUDE_Y = 0.05;
 export const SPIRIT_FLOAT_AMPLITUDE_X = 0.2;
-export const SPIRIT_COUNT_PER_LAYER = 15;
+export const SPIRIT_COUNT_PER_LAYER = 25;
 export const SPIRIT_LAYERS = [1, 2, 3];
 
 export const CHARACTERS = {

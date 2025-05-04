@@ -1,4 +1,4 @@
-import { Application, BlurFilter, Container, Graphics } from "pixi.js";
+import { Application, Container, Graphics } from "pixi.js";
 import {
   SCENE_WIDTH,
   SCENE_HEIGHT,
@@ -51,10 +51,6 @@ function createSpirit(x: number, y: number): Graphics {
 
   spirit.x = x;
   spirit.y = y;
-
-  const blur = new BlurFilter();
-  blur.blur = radius;
-  spirit.filters = [blur];
 
   return spirit;
 }
