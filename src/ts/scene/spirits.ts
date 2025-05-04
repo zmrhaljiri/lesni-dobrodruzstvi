@@ -17,17 +17,28 @@ interface Layer {
   container: Container;
 }
 
-export function addSpiritsToLayers(app: Application, layers: Layer[]) {
-  for (const layerIndex of SPIRIT_LAYERS) {
-    for (let i = 0; i < SPIRIT_COUNT_PER_LAYER; i++) {
-      const x = Math.random() * SCENE_WIDTH;
-      const y = Math.random() * SCENE_HEIGHT;
+interface SpiritData {
+  sprite: Graphics;
+  offsetX: number;
+  offsetY: number;
+}
 
-      const spirit = createSpirit(x, y);
-      layers[layerIndex].container.addChild(spirit);
-      animateSpirit(app, spirit, x, y);
+export function addSpiritsToLayers(app: Application, layers: Layer[]) {
+  const spirits: SpiritData[] = [];
+
+  for (const layerIndex of SPIRIT_LAYERS) {
+    const layer = layers[layerIndex];
+    for (let i = 0; i < SPIRIT_COUNT_PER_LAYER; i++) {
+      const offsetX = Math.random() * SCENE_WIDTH;
+      const offsetY = Math.random() * SCENE_HEIGHT;
+      const spirit = createSpirit(offsetX, offsetY);
+      layer.container.addChild(spirit);
+
+      spirits.push({ sprite: spirit, offsetX, offsetY });
     }
   }
+
+  app.ticker.add(() => animateSpirits(spirits));
 }
 
 function createSpirit(x: number, y: number): Graphics {
@@ -48,17 +59,13 @@ function createSpirit(x: number, y: number): Graphics {
   return spirit;
 }
 
-function animateSpirit(
-  app: Application,
-  spirit: Graphics,
-  offsetX: number,
-  offsetY: number,
-) {
-  app.ticker.add(() => {
-    const time = performance.now();
-    spirit.y +=
-      Math.sin(time * SPIRIT_FLOAT_FREQ_Y + offsetX) * SPIRIT_FLOAT_AMPLITUDE_Y;
-    spirit.x +=
+function animateSpirits(spirits: SpiritData[]) {
+  const time = performance.now();
+
+  for (const { sprite, offsetX, offsetY } of spirits) {
+    sprite.x +=
       Math.sin(time * SPIRIT_FLOAT_FREQ_X + offsetY) * SPIRIT_FLOAT_AMPLITUDE_X;
-  });
+    sprite.y +=
+      Math.sin(time * SPIRIT_FLOAT_FREQ_Y + offsetX) * SPIRIT_FLOAT_AMPLITUDE_Y;
+  }
 }
