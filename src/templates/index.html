@@ -1,0 +1,102 @@
+<html lang="cs">
+
+<head>
+  <title>Lesní dobrodružství</title>
+
+  <meta id="viewport" name="viewport"
+    content="width=device-width, minimum-scale=1.0, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+
+  <style>
+    html {
+      font-size: 100%;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #pixi-content {
+      background: #141414;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    #start-overlay {
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      position: fixed;
+      inset: 0;
+      background: #141414;
+      color: #f4f4f4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition-property: opacity, visibility;
+      transition-duration: 0.5s;
+      transition-timing-function: ease-out;
+      transition-delay: 0.1s;
+    }
+
+    h1 {
+      font-weight: 400;
+      font-size: 3rem;
+    }
+
+    .start-content {
+      text-align: center;
+    }
+
+    .btn {
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      padding: 1rem 1.5rem;
+      font-size: 2rem;
+      cursor: pointer;
+      background-color: #9E6100;
+      color: #f4f4f4;
+      font-weight: 700;
+      border: none;
+      text-transform: uppercase;
+    }
+
+    .btn:hover {
+      background-color: #855200;
+    }
+
+    .highlight {
+      display: block;
+      color: #de8900;
+      font-weight: 700;
+    }
+
+    .hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="pixi-content">
+    <canvas id="pixi-canvas"></canvas>
+
+    <div id="start-overlay">
+      <div class="start-content">
+        <img src="/images/intro.png" width="186" height="186" alt="Logo lesní dobrodružství" />
+        <h1>Vítejte ve hře <strong class="highlight">Lesní dobrodružství</span></h1>
+        <button id="start-button" class="btn">Začít hru</button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
